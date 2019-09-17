@@ -22,7 +22,7 @@ class Calculator {
         case removeAll
         case changeSign((Double) -> Double)
         case percentage((Double) -> Double)
-        case devide((Double, Double) -> Double)
+        case divide((Double, Double) -> Double)
         case multiply((Double, Double) -> Double)
         case subtraction((Double, Double) -> Double)
         case add((Double, Double) -> Double)
@@ -33,7 +33,7 @@ class Calculator {
         "AC": .removeAll,
         "±": .changeSign({-$0}),
         "%": .percentage({0.01*$0}),
-        "÷": .devide({$0/$1}),
+        "÷": .divide({$0/$1}),
         "×": .multiply({$0*$1}),
         "-": .subtraction({$0-$1}),
         "+": .add({$0+$1}),
@@ -49,8 +49,7 @@ class Calculator {
                 accumulatedValue = changeSign(accumulatedValue)
             case .percentage(let percentage):
                 accumulatedValue = percentage(accumulatedValue)
-            case .devide(_):
-                <#code#>
+            case .divide(let divide):
             case .multiply(_):
                 <#code#>
             case .subtraction(_):
@@ -59,9 +58,15 @@ class Calculator {
                 <#code#>
             case .equals:
                 <#code#>
-            @unknown default:
-                <#code#>
             }
         }
     }
+    //MARK: 연산을기다리는값 구조체
+    struct PendigValue {
+        var pendingOperation: (Double, Double) -> Double
+        var firstValue: Double
+    }
+    
+    var pending: PendigValue?
+
 }
