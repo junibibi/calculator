@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     var userTouchingDigit = false
     
+    let calculator = Calculator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,6 +36,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchOperationSign(_ sender: UIButton) {
+        if userTouchingDigit {
+            if let number = Double(display.text!) {
+                calculator.setOperand(number: number)
+            }
+            userTouchingDigit = false
+        }
+        if let sign = sender.currentTitle {
+            calculator.performOperation(sign: sign)
+        }
+        display.text = String(calculator.result)
     }
 }
 
