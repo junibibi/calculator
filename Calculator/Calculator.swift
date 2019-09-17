@@ -50,14 +50,16 @@ class Calculator {
             case .percentage(let percentage):
                 accumulatedValue = percentage(accumulatedValue)
             case .divide(let divide):
-            case .multiply(_):
-                <#code#>
-            case .subtraction(_):
-                <#code#>
-            case .add(_):
-                <#code#>
+                pending = PendigValue.init(pendingOperation: divide, firstValue: accumulatedValue)
+            case .multiply(let multiply):
+                pending = PendigValue.init(pendingOperation: multiply, firstValue: accumulatedValue)
+            case .subtraction(let subtraction):
+                pending = PendigValue.init(pendingOperation: subtraction, firstValue: accumulatedValue)
+            case .add(let add):
+                pending = PendigValue.init(pendingOperation: add, firstValue: accumulatedValue)
             case .equals:
-                <#code#>
+                accumulatedValue = pending!.pendingOperation(pending!.firstValue, accumulatedValue)
+                pending = nil
             }
         }
     }
@@ -66,7 +68,7 @@ class Calculator {
         var pendingOperation: (Double, Double) -> Double
         var firstValue: Double
     }
-    
+    // = 이 눌리고 나면 연산을기다리는 값은 nil로 하기위해 옵셔널로 선언함
     var pending: PendigValue?
 
 }
