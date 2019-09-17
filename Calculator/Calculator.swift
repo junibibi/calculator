@@ -20,12 +20,23 @@ class Calculator {
     
     enum Operation {
         case removeAll
-        case changeSign
-        case percentage
-        case devide
-        case multiply
-        case subtraction
-        case add
+        case changeSign((Double) -> Double)
+        case percentage((Double) -> Double)
+        case devide((Double, Double) -> Double)
+        case multiply((Double, Double) -> Double)
+        case subtraction((Double, Double) -> Double)
+        case add((Double, Double) -> Double)
         case equals
     }
+    
+    var operationSign: [String: Operation] = [
+        "AC": .removeAll,
+        "±": .changeSign({-$0}),
+        "%": .percentage({0.01*$0}),
+        "÷": .devide({$0/$1}),
+        "×": .multiply({$0*$1}),
+        "-": .subtraction({$0-$1}),
+        "+": .add({$0+$1}),
+        "=": . equals
+    ]
 }
