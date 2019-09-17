@@ -70,5 +70,12 @@ class Calculator {
     }
     // = 이 눌리고 나면 연산을기다리는 값은 nil로 하기위해 옵셔널로 선언함
     var pending: PendigValue?
+    
+    //result에는 연산하고 업데이트된 accumulatedValue가 들어간다.
+    var result: Double {
+        get {
+            return accumulatedValue
+        }
+    }
 
 }
