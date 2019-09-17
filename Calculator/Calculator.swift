@@ -39,4 +39,29 @@ class Calculator {
         "+": .add({$0+$1}),
         "=": . equals
     ]
+    
+    func performOperation(sign: String) {
+        if let operationSign = operationSign[sign] {
+            switch operationSign {
+            case .removeAll:
+                accumulatedValue = 0.0
+            case .changeSign(let changeSign):
+                accumulatedValue = changeSign(accumulatedValue)
+            case .percentage(let percentage):
+                accumulatedValue = percentage(accumulatedValue)
+            case .devide(_):
+                <#code#>
+            case .multiply(_):
+                <#code#>
+            case .subtraction(_):
+                <#code#>
+            case .add(_):
+                <#code#>
+            case .equals:
+                <#code#>
+            @unknown default:
+                <#code#>
+            }
+        }
+    }
 }
