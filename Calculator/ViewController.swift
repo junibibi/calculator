@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
     
+    var userTouchingDigit = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,7 +21,16 @@ class ViewController: UIViewController {
 
 
     @IBAction func touchDigit(_ sender: UIButton) {
-        display.text = sender.currentTitle
+        if let digit = sender.currentTitle {
+            if userTouchingDigit {
+                var operand = display.text!
+                operand = operand + digit
+                display.text = operand
+            } else {
+               display.text = digit
+            }
+            userTouchingDigit = true
+        }
     }
 }
 
