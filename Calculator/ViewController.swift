@@ -32,5 +32,8 @@ class ViewController: UIViewController {
             userTouchingDigit = true
         }
     }
+    
+    @IBAction func touchOperationSign(_ sender: UIButton) {
+    }
 }
 
