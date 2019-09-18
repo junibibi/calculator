@@ -58,8 +58,9 @@ class Calculator {
             case .add(let add):
                 pending = PendigValue.init(pendingOperation: add, firstValue: accumulatedValue)
             case .equals:
-                accumulatedValue = pending!.pendingOperation(pending!.firstValue, accumulatedValue)
-                pending = nil
+                if pending != nil {
+                    accumulatedValue = pending!.pendingOperation(pending!.firstValue, accumulatedValue)
+                }
             }
         }
     }
