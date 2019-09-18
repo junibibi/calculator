@@ -45,7 +45,27 @@ class ViewController: UIViewController {
         if let sign = sender.currentTitle {
             calculator.performOperation(sign: sign)
         }
-        display.text = String(calculator.result)
+        var doubleResult = calculator.result
+        var strResult = String(doubleResult)
+        var arr = [String]()
+        var arr2 = [String]()
+        for c in strResult {
+            arr.append(String(c))
+        }
+        var index = arr.firstIndex(of: ".")
+        
+        for i in index! ..< arr.count {
+            arr2.append(arr[i])
+        }
+        
+        if arr2.contains("1") || arr2.contains("2") || arr2.contains("3") || arr2.contains("4") || arr2.contains("5") || arr2.contains("6") || arr2.contains("7") || arr2.contains("8") || arr2.contains("9")  {
+            display.text = String(calculator.result)
+        } else {
+            var intResult = Int(calculator.result)
+            display.text = String(intResult)
+        }
+        
+        
     }
 }
 
