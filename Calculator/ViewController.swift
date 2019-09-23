@@ -64,8 +64,39 @@ class ViewController: UIViewController {
             var intResult = Int(calculator.result)
             display.text = String(intResult)
         }
+    }
+    
+    
+    
+    @IBAction func touchMC() {
+        calculator.memory = 0.0
+        display.text = "0.0"
+    }
+    
+    
+    @IBAction func touchMR() {
+        let memory = calculator.memory
+        let stringM = String(memory)
         
+        display.text = stringM
         
     }
+    
+    @IBAction func touchMSubtract() {
+        let string = display.text!
+        let double = Double(string)!
+        
+        calculator.mSubtract(number: double)
+    }
+    
+    @IBAction func touchMAdd() {
+        let string = display.text!
+        let double = Double(string)!
+        
+        calculator.mAdd(number: double)
+
+    }
+    
+    
 }
 

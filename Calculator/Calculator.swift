@@ -78,5 +78,18 @@ class Calculator {
             return accumulatedValue
         }
     }
+    
+    //MARK: 메모리계산기능
+    
+    var memory = 0.0
+    
+    func mAdd(number: Double) {
+        memory += number
+    }
+    
+    func mSubtract(number: Double) {
+        memory -= number
+    }
+    
 
 }
