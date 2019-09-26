@@ -83,6 +83,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchMSubtract() {
+        userTouchingDigit = false
+
         let string = display.text!
         let double = Double(string)!
         
@@ -90,6 +92,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchMAdd() {
+        userTouchingDigit = false
+        
         let string = display.text!
         let double = Double(string)!
         
