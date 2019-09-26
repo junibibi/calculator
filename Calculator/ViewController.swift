@@ -46,38 +46,23 @@ class ViewController: UIViewController {
             calculator.performOperation(sign: sign)
         }
         var doubleResult = calculator.result
-        var strResult = String(doubleResult)
-        var arr = [String]()
-        var arr2 = [String]()
-        for c in strResult {
-            arr.append(String(c))
-        }
-        var index = arr.firstIndex(of: ".")
-        
-        for i in index! ..< arr.count {
-            arr2.append(arr[i])
-        }
-        
-        if arr2.contains("1") || arr2.contains("2") || arr2.contains("3") || arr2.contains("4") || arr2.contains("5") || arr2.contains("6") || arr2.contains("7") || arr2.contains("8") || arr2.contains("9")  {
-            display.text = String(calculator.result)
-        } else {
-            var intResult = Int(calculator.result)
-            display.text = String(intResult)
-        }
+        let result = setNumberType(number: doubleResult)
+        display.text = result
     }
     
     
     
     @IBAction func touchMC() {
-        calculator.memory = 0.0
-        display.text = "0.0"
+        calculator.memory = 0
+        display.text = "0"
     }
     
     
     @IBAction func touchMR() {
         let memory = calculator.memory
-        let stringM = String(memory)
+//        let stringM = String(memory)
         
+        let stringM = setNumberType(number: memory)
         display.text = stringM
         
     }
@@ -101,6 +86,31 @@ class ViewController: UIViewController {
 
     }
     
+    //Double/Int 변환
+    func setNumberType(number: Double) -> String {
+        var doubleNumber = number
+        var stringNumber = String(doubleNumber)
+        
+        var numbers = [String]()
+        var numbersBelowDot = [String]()
+        
+        for c in stringNumber {
+            numbers.append(String(c))
+        }
+        var index = numbers.firstIndex(of: ".")
+        
+        for i in index! ..< numbers.count {
+            numbersBelowDot.append(numbers[i])
+        }
+        
+        if numbersBelowDot.contains("1") || numbersBelowDot.contains("2") || numbersBelowDot.contains("3") || numbersBelowDot.contains("4") || numbersBelowDot.contains("5") || numbersBelowDot.contains("6") || numbersBelowDot.contains("7") || numbersBelowDot.contains("8") || numbersBelowDot.contains("9")  {
+            return String(doubleNumber)
+            
+        } else {
+            var intNumber = Int(doubleNumber)
+             return String(intNumber)
+        }
+    }
     
 }
 
