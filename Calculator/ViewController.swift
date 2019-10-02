@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         if let sign = sender.currentTitle {
             calculator.performOperation(sign: sign)
         }
-        var doubleResult = calculator.result
+        let doubleResult = calculator.result
         let result = setNumberType(number: doubleResult)
         display.text = result
     }
@@ -88,8 +88,8 @@ class ViewController: UIViewController {
     
     //Double/Int 변환
     func setNumberType(number: Double) -> String {
-        var doubleNumber = number
-        var stringNumber = String(doubleNumber)
+        let doubleNumber = number
+        let stringNumber = String(doubleNumber)
         
         var numbers = [String]()
         var numbersBelowDot = [String]()
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         for c in stringNumber {
             numbers.append(String(c))
         }
-        var index = numbers.firstIndex(of: ".")
+        let index = numbers.firstIndex(of: ".")
         
         for i in index! ..< numbers.count {
             numbersBelowDot.append(numbers[i])
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
             return String(doubleNumber)
             
         } else {
-            var intNumber = Int(doubleNumber)
+            let intNumber = Int(doubleNumber)
              return String(intNumber)
         }
     }
